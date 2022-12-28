@@ -40,7 +40,7 @@ function setup() {
     music_btn = createButton("音樂跳舞")
     music_btn.position(10,10)
     music_btn.size(350, 100);
-    music_btn.style('background-color', 'black');
+    music_btn.style('background-color', 'pink');
     music_btn.style('font-size', '33px');
     music_btn.style('color', 'white');
     music_btn.mousePressed(music_btn_pressed);
@@ -48,7 +48,7 @@ function setup() {
     stop_btn = createButton("停止")
     stop_btn.position(370,10)
     stop_btn.size(350,100);
-    stop_btn.style('background-color','black');
+    stop_btn.style('background-color','pink');
     stop_btn.style('font-size','33px');
     stop_btn.style('color','white');
     stop_btn.mousePressed(stop_btn_pressed)
@@ -56,7 +56,7 @@ function setup() {
     say_btn = createButton("語音命令(跳舞/停止)")
     say_btn.position(730,10)
     say_btn.size(350, 100);
-    say_btn.style('background-color','black');
+    say_btn.style('background-color','pink');
     say_btn.style('font-size','33px');
     say_btn.style('color','white');
     say_btn.mousePressed(say_btn_pressed)
@@ -64,7 +64,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(150,200,30);
   textSize(50);
   push()
 
@@ -74,20 +74,24 @@ function draw() {
 
 
     fill(0)
-    ellipse(-70+m_x/40,-70+m_y/80,70)
-    noFill()
+    ellipse(-70+m_x/20,-70+m_y/30,70)
+    fill(255)
+    ellipse(-50+m_x/20,-60+m_y/30,20)
 
     fill(0)
-    ellipse(70+m_x/40,-90+m_y/80,70)
-
-    fill(255,211,170)
-    ellipse(200+m_x/40,180+m_y/80,100)
-
-    fill(255,211,170)
-    ellipse(-200+m_x/40,180+m_y/80,100)
-
+    ellipse(70+m_x/30,-70+m_y/80,70)
     fill(255)
-    ellipse(-50,110,90)
+    ellipse(90+m_x/20,-60+m_y/30,20)
+
+    fill(255-m_x/2,211-m_x/2,170-m_x/2)
+    ellipse(200+m_x/20,180+m_y/50,100)
+
+    fill(255-m_x/2,211-m_x/2,170-m_x/2)
+    ellipse(-200+m_x/20,180+m_y/80,100)
+    
+
+    fill(255,255-m_x,255-m_y)
+    rect(-50,80,90+m_x/20)
 
     if(songIsplay){
       vol = amp.getLevel()
@@ -113,21 +117,21 @@ function music_btn_pressed(){
   songIsplay = true
   amp=new p5.Amplitude()
   music_btn.style('background-color','#00b4d8')
-  stop_btn.style('background-color','black')
-  Speech_btn.style('background-color','black')
+  stop_btn.style('background-color','pink')
+  Speech_btn.style('background-color','pink')
 }
 
 function stop_btn_pressed(){
   song.pause()
   songIsplay = false
-  music_btn.style('background-color','black')
+  music_btn.style('background-color','pink')
   stop_btn.style('background-color','#00b4d8')
-  Speech_btn.style('background-color','black')
+  Speech_btn.style('background-color','pink')
 }
 
 function say_btn_pressed(){
-  music_btn.style('background-color','black')
-  stop_btn.style('background-color','black')
+  music_btn.style('background-color','pink')
+  stop_btn.style('background-color','pink')
   say_btn.style('background-color','#00b4d8')
   myRec.onResult = showResult;
   myRec.start();
